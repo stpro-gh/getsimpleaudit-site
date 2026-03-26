@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — SimpleAudit</title>
+<meta name="description" content="What's new in SimpleAudit — release notes, new features, and fixes.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:    #0A1628;
+    --blue:    #1D97F1;
+    --lime:    #C4F50F;
+    --text:    #1F2937;
+    --muted:   #6B7280;
+    --border:  #E5E7EB;
+    --bg:      #F5F6F8;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #fff; color: var(--text); line-height: 1.6;
+         -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    height: 62px; display: flex; align-items: center;
+    padding: 0 32px; justify-content: space-between;
+  }
+  .nav-logo { font-size: 19px; font-weight: 900; color: #fff;
+              text-decoration: none; letter-spacing: -.3px; }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,.65);
+                 text-decoration: none; transition: color .15s; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .nav-btn { background: var(--blue); color: #fff !important;
+             padding: 9px 18px; border-radius: 7px; font-weight: 700 !important; }
+  .nav-btn:hover { background: #1884d4 !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy); padding: 120px 24px 60px;
+    text-align: center;
+  }
+  .hero-label { font-size: 11px; font-weight: 700; letter-spacing: .12em;
+                text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  .hero h1 { font-size: 40px; font-weight: 900; color: #fff;
+             letter-spacing: -.5px; margin-bottom: 14px; }
+  .hero p { font-size: 16px; color: rgba(255,255,255,.55); max-width: 480px; margin: 0 auto; }
+
+  /* LAYOUT */
+  .wrap { max-width: 760px; margin: 0 auto; padding: 60px 24px 100px; }
+
+  /* RELEASE */
+  .release { display: grid; grid-template-columns: 160px 1fr; gap: 0 40px;
+             padding: 40px 0; border-bottom: 1px solid var(--border); }
+  .release:last-child { border-bottom: none; }
+  .release-meta { padding-top: 4px; }
+  .release-date { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .release-version { font-size: 11px; color: var(--muted); font-family: monospace;
+                     background: var(--bg); padding: 2px 8px; border-radius: 4px;
+                     display: inline-block; }
+  .release-badge { display: inline-block; font-size: 10px; font-weight: 700;
+                   padding: 2px 9px; border-radius: 20px; margin-top: 6px;
+                   text-transform: uppercase; letter-spacing: .04em; }
+  .badge-major { background: #eff6ff; color: #1d4ed8; }
+  .badge-feature { background: #f0fdf4; color: #15803d; }
+  .badge-fix { background: #fff7ed; color: #c2410c; }
+  .badge-security { background: #fef2f2; color: #dc2626; }
+
+  .release-body h2 { font-size: 20px; font-weight: 800; color: var(--text);
+                     letter-spacing: -.3px; margin-bottom: 8px; }
+  .release-body .summary { font-size: 14px; color: var(--muted);
+                            margin-bottom: 20px; line-height: 1.7; }
+  .items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .items li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+  .item-tag { flex-shrink: 0; font-size: 10px; font-weight: 700; padding: 2px 8px;
+              border-radius: 4px; margin-top: 2px; text-transform: uppercase; letter-spacing: .03em; }
+  .tag-new      { background: #dcfce7; color: #15803d; }
+  .tag-improved { background: #eff6ff; color: #1d4ed8; }
+  .tag-fixed    { background: #fff7ed; color: #c2410c; }
+  .tag-security { background: #fef2f2; color: #dc2626; }
+
+  /* CTA */
+  .cta-bar { background: var(--navy); border-radius: 12px; padding: 40px;
+             text-align: center; margin-top: 60px; }
+  .cta-bar h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .cta-bar p  { font-size: 14px; color: rgba(255,255,255,.55); margin-bottom: 24px; }
+  .btn-main { display: inline-block; background: var(--blue); color: #fff;
+              font-weight: 700; font-size: 14px; padding: 12px 28px;
+              border-radius: 8px; text-decoration: none; }
+  .btn-ghost { display: inline-block; color: rgba(255,255,255,.6);
+               font-size: 13px; text-decoration: none; margin-left: 20px; }
+  .btn-ghost:hover { color: #fff; }
+
+  /* SUBSCRIBE */
+  .subscribe { background: var(--bg); border: 1px solid var(--border);
+               border-radius: 10px; padding: 24px 28px; margin-bottom: 48px;
+               display: flex; align-items: center; justify-content: space-between;
+               gap: 20px; flex-wrap: wrap; }
+  .subscribe p { font-size: 14px; color: var(--muted); }
+  .subscribe strong { color: var(--text); }
+  .subscribe a { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .release { grid-template-columns: 1fr; gap: 12px; }
+    .hero h1 { font-size: 28px; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Simple<span>Audit</span></a>
+  <div class="nav-links">
+    <a href="/#features">Features</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/changelog.html" class="active">Changelog</a>
+    <a href="https://app.getsimpleaudit.com" class="nav-btn">Sign In</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Product Updates</div>
+  <h1>What's New in SimpleAudit</h1>
+  <p>Every feature shipped, fix deployed, and improvement made — updated with every release.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="subscribe">
+    <div>
+      <strong>Get release notes by email.</strong>
+      <p>We send a short update when something meaningful ships. No noise.</p>
+    </div>
+    <a href="mailto:updates@getsimpleaudit.com?subject=Subscribe+to+release+notes">Subscribe →</a>
+  </div>
+
+  <!-- ── v1.3 — March 26, 2026 ── -->
+  <div class="release">
+    <div class="release-meta">
+      <div class="release-date">Mar 26, 2026</div>
+      <div class="release-version">v1.3</div>
+      <div class="release-badge badge-major">Major</div>
+    </div>
+    <div class="release-body">
+      <h2>Real CVE Detection — 70+ Applications</h2>
+      <p class="summary">
+        SimpleAudit now queries the NIST National Vulnerability Database (NVD) for every
+        installed application — the same database ConnectSecure and enterprise scanners use.
+        Instead of checking 15 hardcoded apps, we now check 70+ including Chrome, Zoom,
+        Adobe, Teams, WinRAR, Java, Python, VPN clients, and more.
+      </p>
+      <ul class="items">
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>NVD CVE lookup — real CVE IDs, CVSS scores, and descriptions for every matched app version</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>70+ application CPE mappings — Chrome, Zoom, Adobe Acrobat, Teams, Firefox, 7-Zip, VLC, WinRAR, OpenVPN, Cisco AnyConnect and more</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>CVSS score + severity in every CVE finding — shows exactly how critical each vulnerability is</span>
+        </li>
+        <li>
+          <span class="item-tag tag-improved">Improved</span>
+          <span>7-day local cache — repeat scans are instant, no re-querying the same version twice</span>
+        </li>
+        <li>
+          <span class="item-tag tag-improved">Improved</span>
+          <span>CVE findings now feed into the risk score and remediation recommendations list</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── v1.2 — March 25, 2026 ── -->
+  <div class="release">
+    <div class="release-meta">
+      <div class="release-date">Mar 25, 2026</div>
+      <div class="release-version">v1.2</div>
+      <div class="release-badge badge-feature">Feature</div>
+    </div>
+    <div class="release-body">
+      <h2>Dashboard Upgrade + Mobile Portal</h2>
+      <p class="summary">
+        The portal dashboard now shows risk score and last scan date for every company at a glance.
+        The admin portal is now fully mobile-responsive with a slide-in sidebar.
+      </p>
+      <ul class="items">
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Dashboard shows latest risk score badge and last scan date per company</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Mobile-responsive portal — hamburger sidebar, stacked grids, works on phone and tablet</span>
+        </li>
+        <li>
+          <span class="item-tag tag-improved">Improved</span>
+          <span>Reseller guide PDF now cached in Azure Blob — instant download instead of 60-second wait</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── v1.1 — March 25, 2026 ── -->
+  <div class="release">
+    <div class="release-meta">
+      <div class="release-date">Mar 25, 2026</div>
+      <div class="release-version">v1.1</div>
+      <div class="release-badge badge-security">Security</div>
+    </div>
+    <div class="release-body">
+      <h2>Security Hardening — 11 Fixes</h2>
+      <p class="summary">
+        Deep security audit identified 26 issues. 11 fixed and deployed. Highlights below.
+      </p>
+      <ul class="items">
+        <li>
+          <span class="item-tag tag-security">Security</span>
+          <span>2FA codes now use cryptographically secure generation (replaced predictable random)</span>
+        </li>
+        <li>
+          <span class="item-tag tag-security">Security</span>
+          <span>Constant-time secret comparison on all token checks — prevents timing attacks</span>
+        </li>
+        <li>
+          <span class="item-tag tag-security">Security</span>
+          <span>HSTS header added — forces HTTPS on all connections</span>
+        </li>
+        <li>
+          <span class="item-tag tag-security">Security</span>
+          <span>Login rate limited to 5 attempts/minute — brute-force protection</span>
+        </li>
+        <li>
+          <span class="item-tag tag-fixed">Fixed</span>
+          <span>Authorization check on company edit — prevents users accessing other accounts</span>
+        </li>
+        <li>
+          <span class="item-tag tag-improved">Improved</span>
+          <span>Database indexes on 4 high-query columns — faster portal across the board</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── v1.0 — March 24, 2026 ── -->
+  <div class="release">
+    <div class="release-meta">
+      <div class="release-date">Mar 24, 2026</div>
+      <div class="release-version">v1.0</div>
+      <div class="release-badge badge-major">Launch</div>
+    </div>
+    <div class="release-body">
+      <h2>SimpleAudit v1.0 — Beta Launch</h2>
+      <p class="summary">
+        First public beta. 12-module security scanner, three PDF report types,
+        and a full MSP portal. Here's what shipped at launch.
+      </p>
+      <ul class="items">
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>12-module scanner — local audit, event log, OTX threat intel, network, WLAN, USB, TLS/SSL, credentials, SMB, software EOL, HIBP/DeHashed breach check</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Business Proposal PDF — turns any scan into a branded sales document. Unique in the MSP market.</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Executive + Technical PDF reports with CIS 18 / NIST CSF 2.0 compliance mapping</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Client magic-link portal — share reports with clients without requiring an account</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Pre-sales snapshot scanner — domain, breach, and Shodan check before the site visit</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Syncro PSA integration — auto-creates tickets on high-risk scan results</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Scan scheduling — set monthly/quarterly/biannual reminders per client</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>Password reset, onboarding wizard, guided tour, Terms of Service + Privacy Policy</span>
+        </li>
+        <li>
+          <span class="item-tag tag-new">New</span>
+          <span>GitHub Actions CI/CD — portal auto-deploys on every push to main</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <h3>Want early access?</h3>
+    <p>Beta is open. Try SimpleAudit free for 60 days — no credit card required.</p>
+    <a href="https://app.getsimpleaudit.com" class="btn-main">Request Access →</a>
+    <a href="/" class="btn-ghost">Learn more</a>
+  </div>
+
+</div>
+
+</body>
+</html>
