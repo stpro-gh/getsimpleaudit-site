@@ -2,22 +2,20 @@
 <!-- SAMPLE REPORT PDF:
      Azure Blob URL: https://simpleauditreports.blob.core.windows.net/simpleaudit-portal/docs/sample_report.pdf
      Generated: 2026-03-25 — Acme Manufacturing Co. mock data (Score 47/100, Grade D)
-     Use this URL for landing page "Download Sample Report" CTA button.
-     Update the href in the sample report download button below when adding it to the page.
 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SimpleAudit — MSP Security Assessments That Close Deals</title>
-<meta name="description" content="Run a professional security assessment on any client in under 20 minutes. Get an Executive Report and Business Proposal automatically — no manual work.">
+<meta name="description" content="Run a professional security assessment on any client in under 20 minutes. Executive Report, Technical Report, and Business Proposal generated automatically.">
 <link rel="canonical" href="https://getsimpleaudit.com/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://getsimpleaudit.com/" />
 <meta property="og:title" content="SimpleAudit — MSP Security Assessments That Close Deals" />
-<meta property="og:description" content="Run a professional security assessment on any client in under 20 minutes. Executive Report + Business Proposal generated automatically." />
+<meta property="og:description" content="Run a professional security assessment on any client in under 20 minutes. Executive Report, Technical Report, and Business Proposal generated automatically." />
 <meta property="og:site_name" content="SimpleAudit" />
 <meta property="og:image" content="https://getsimpleaudit.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -26,7 +24,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SimpleAudit — MSP Security Assessments That Close Deals" />
-<meta name="twitter:description" content="Run a professional security assessment on any client in under 20 minutes. Executive Report + Business Proposal generated automatically." />
+<meta name="twitter:description" content="Run a professional security assessment on any client in under 20 minutes. Executive Report, Technical Report, and Business Proposal generated automatically." />
 <meta name="twitter:image" content="https://getsimpleaudit.com/og-image.png" />
 
 <!-- Favicon -->
@@ -54,8 +52,14 @@
       "name": "SimpleAudit",
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "Windows",
-      "description": "Professional security assessment tool for MSPs and IT consultants. Scans networks, endpoints, Microsoft 365, and breach databases, then generates Executive Reports and Business Proposals automatically.",
+      "description": "Professional security assessment tool for MSPs and IT consultants. Scans endpoints, networks, Microsoft 365, and breach databases, then generates branded PDF reports automatically.",
       "offers": [
+        {
+          "@type": "Offer",
+          "name": "Solo",
+          "price": "25",
+          "priceCurrency": "USD"
+        },
         {
           "@type": "Offer",
           "name": "Starter",
@@ -100,7 +104,7 @@
           "name": "How is SimpleAudit different from ConnectSecure or Network Detective?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "SimpleAudit automatically generates a Business Proposal PDF from your scan data — translating technical findings into a client-ready sales document. No other major MSP assessment tool does this. It's also significantly cheaper at entry level ($49/mo vs. $300+/mo) and requires no long-term contract."
+            "text": "SimpleAudit combines endpoint scanning, network scanning, M365 security checks, breach monitoring, and threat intelligence into a single scan. Most competing tools require separate products or add-ons for each of those. We also generate a Business Proposal PDF that translates findings into a client-ready sales document. At $49/mo entry price with no long-term contract, the barrier to try it is low."
           }
         },
         {
@@ -108,31 +112,7 @@
           "name": "Do I need IT credentials or domain admin access to run a scan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No credentials are required for the Standard scan. It runs from any Windows machine on the client's network and assesses security posture from that machine's perspective."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I white-label this completely — is SimpleAudit visible to my clients?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "SimpleAudit is completely invisible to your clients on every plan. Every PDF, portal page, and email shows your MSP's name, logo, and contact information."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is the scan agent going to trigger antivirus on the client machine?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The agent is a lightweight compiled binary with no offensive security tooling, so it runs cleanly through Windows Defender and most business antivirus solutions. We always recommend briefing the client before running any scan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the Business Proposal PDF and how is it generated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "SimpleAudit takes scan findings, maps them to risk categories and estimated financial exposure, adds your MSP's recommended services and contact information, and generates a professionally formatted PDF proposal automatically — typically in under a minute."
+            "text": "No credentials are required for the standard scan. It runs from any Windows machine on the client's network and assesses security posture from that machine's perspective."
           }
         },
         {
@@ -236,7 +216,7 @@
   .hero-sub {
     font-size: clamp(15px, 2.2vw, 19px);
     color: rgba(255,255,255,.6);
-    max-width: 560px; margin: 0 auto 40px;
+    max-width: 580px; margin: 0 auto 40px;
     line-height: 1.75;
   }
   .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
@@ -255,6 +235,7 @@
     padding: 15px 30px; border-radius: 9px;
     font-size: 15px; font-weight: 600; text-decoration: none;
     transition: background .15s;
+    cursor: pointer;
   }
   .btn-ghost:hover { background: rgba(255,255,255,.14); }
 
@@ -314,6 +295,20 @@
   .rt-std { background: rgba(29,151,241,.2); color: var(--lt-blue); }
   .rt-uniq { background: rgba(196,245,15,.2); color: var(--lime); }
 
+  /* WHAT YOU SCAN */
+  .scan-dark { background: linear-gradient(160deg, #0d1b2e 0%, #0a1628 100%); }
+  .scan-dark .label { color: var(--lt-blue); }
+  .scan-dark h2 { color: #fff; }
+  .scan-dark .sub { color: rgba(255,255,255,.55); }
+  .scan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 40px; }
+  .scan-item { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 16px 14px; }
+  .scan-item .si-icon { font-size: 20px; margin-bottom: 8px; }
+  .scan-item h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .scan-item p { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.5; }
+  .scan-item .si-tag { display: inline-block; margin-top: 6px; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 12px; text-transform: uppercase; }
+  .si-agent { background: rgba(29,151,241,.15); color: var(--lt-blue); }
+  .si-portal { background: rgba(196,245,15,.15); color: var(--lime); }
+
   /* COMPARISON */
   .comparison { background: var(--off-white); }
   .comp-wrap { overflow-x: auto; margin-top: 44px; border-radius: 12px; border: 1px solid var(--border); }
@@ -324,12 +319,11 @@
   table.comp tr.you-row td { background: #EFF6FF; font-weight: 600; }
   table.comp tr:last-child td { border-bottom: none; }
   .y { color: #16A34A; font-weight: 700; }
-  .n { color: #DC2626; }
+  .nn { color: #DC2626; }
   .p { color: #D97706; }
 
   /* PRICING */
   .pricing { background: #fff; }
-  /* Toggle */
   .billing-toggle { display: flex; align-items: center; gap: 12px; margin: 32px auto 0; justify-content: center; }
   .toggle-label { font-size: 14px; font-weight: 600; color: var(--grey); }
   .toggle-label.active { color: var(--navy); }
@@ -355,8 +349,8 @@
   .pc-features { list-style: none; margin-bottom: 28px; }
   .pc-features li { font-size: 13px; color: #374151; padding: 7px 0; display: flex; align-items: flex-start; gap: 9px; border-bottom: 1px solid #F9FAFB; line-height: 1.45; }
   .pc-features li:last-child { border-bottom: none; }
-  .pc-features li::before { content: '✓'; color: var(--blue); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
-  .pc-features li.no::before { content: '—'; color: #D1D5DB; }
+  .pc-features li::before { content: '\2713'; color: var(--blue); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+  .pc-features li.no::before { content: '\2014'; color: #D1D5DB; }
   .pc-features li.no { color: #9CA3AF; }
   .pc-btn { display: block; text-align: center; padding: 13px; border-radius: 9px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all .15s; }
   .pc-btn.outline { border: 2px solid var(--border); color: var(--navy); }
@@ -373,7 +367,7 @@
   details { border-bottom: 1px solid var(--border); padding: 18px 0; }
   summary { font-size: 15px; font-weight: 700; color: var(--navy); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; }
-  details[open] summary::after { content: '−'; }
+  details[open] summary::after { content: '\2212'; }
   details p { font-size: 15px; color: var(--grey); line-height: 1.75; margin-top: 10px; padding-right: 20px; }
 
   /* FINAL CTA */
@@ -390,7 +384,7 @@
   .foot-logo span { color: var(--blue); }
   footer p { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.8; }
 
-  /* ── Hamburger menu ── */
+  /* Hamburger */
   .nav-hamburger {
     display: none;
     flex-direction: column; gap: 5px;
@@ -439,11 +433,12 @@
     .steps { grid-template-columns: 1fr; }
     .feat-grid { grid-template-columns: 1fr; }
     .r-grid { grid-template-columns: 1fr 1fr; }
+    .scan-grid { grid-template-columns: 1fr 1fr; }
     .price-grid { grid-template-columns: 1fr; }
 
     .comp-wrap { border-radius: 8px; }
     .comp-wrap::before {
-      content: '← Scroll to compare →';
+      content: '\2190 Scroll to compare \2192';
       display: block; text-align: center;
       font-size: 11px; color: var(--grey);
       padding: 8px; background: var(--off-white);
@@ -451,7 +446,7 @@
     }
 
     .cta-btns { flex-direction: column; align-items: stretch; }
-    .cta-btns a { text-align: center; }
+    .cta-btns a, .cta-btns button { text-align: center; width: 100%; }
 
     h2 { letter-spacing: -.4px; }
     .sub { font-size: 15px; }
@@ -459,6 +454,7 @@
 
   @media(max-width:400px) {
     .r-grid { grid-template-columns: 1fr; }
+    .scan-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 14px; }
     .hero-stats .hero-stat .n { font-size: 22px; }
   }
@@ -525,18 +521,10 @@
   }
   .sr-submit:hover { background: #1884d4; transform: translateY(-1px); }
   .sr-submit:disabled { opacity: .6; cursor: default; transform: none; }
-  .sr-success {
-    display: none; text-align: center; padding: 20px 0;
-  }
-  .sr-success .sr-check {
-    font-size: 48px; margin-bottom: 16px;
-  }
-  .sr-success h4 {
-    font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px;
-  }
-  .sr-success p {
-    font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.65;
-  }
+  .sr-success { display: none; text-align: center; padding: 20px 0; }
+  .sr-success .sr-check { font-size: 48px; margin-bottom: 16px; }
+  .sr-success h4 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .sr-success p { font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.65; }
   @media(max-width:480px) {
     .sr-modal { padding: 32px 22px; }
     .sr-form-row { grid-template-columns: 1fr; }
@@ -553,7 +541,7 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="/changelog.html">Changelog</a>
+    <a href="/changelog.html">What's New</a>
     <a href="https://app.getsimpleaudit.com/signup" class="nav-btn">Start Free Trial</a>
   </div>
   <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
@@ -565,7 +553,7 @@
   <a href="#features" onclick="closeMobileMenu()">Features</a>
   <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
-  <a href="/changelog.html" onclick="closeMobileMenu()">Changelog</a>
+  <a href="/changelog.html" onclick="closeMobileMenu()">What's New</a>
   <a href="https://app.getsimpleaudit.com/signup" class="mob-btn">Start Free Trial</a>
 </div>
 
@@ -578,12 +566,11 @@
       Built for Small MSPs &amp; IT Consultants
     </div>
 
-    <h1>Security Assessments That<br><em>Actually Close Deals</em></h1>
+    <h1>Security Assessments That <br><em>Actually Close Deals</em></h1>
 
     <p class="hero-sub">
-      Run a professional security scan on any client in under 20 minutes.
-      Get an Executive Report and a ready-to-present Business Proposal
-      generated automatically — no writing, no templates, no manual work.
+      One scan covers endpoints, networks, Microsoft 365, breach history, and threat intel.
+      Three branded PDF reports generated automatically &mdash; no writing, no templates, no manual work.
     </p>
 
     <div class="hero-btns">
@@ -597,7 +584,7 @@
         <div class="l">Full scan time</div>
       </div>
       <div class="hero-stat">
-        <div class="n">16</div>
+        <div class="n">17+</div>
         <div class="l">Scan modules</div>
       </div>
       <div class="hero-stat">
@@ -614,34 +601,34 @@
 
 <!-- STRIP -->
 <div class="strip">
-  <strong>CIS Controls v8</strong> &amp; <strong>NIST CSF 2.0</strong> automatically mapped &nbsp;·&nbsp;
-  No lengthy contracts &nbsp;·&nbsp;
-  Cancel anytime &nbsp;·&nbsp;
-  Full white-label branding on every plan
+  <strong>CIS Controls v8</strong> &amp; <strong>NIST CSF 2.0</strong> automatically mapped &nbsp;&middot;&nbsp;
+  No lengthy contracts &nbsp;&middot;&nbsp;
+  Cancel anytime &nbsp;&middot;&nbsp;
+  14-day free trial on every plan
 </div>
 
 <!-- PAIN -->
 <section id="pain">
   <div class="container">
     <div class="label">The Problem</div>
-    <h2>Your clients are asking about security.<br>You need a real answer — fast.</h2>
+    <h2>Your clients are asking about security. <br>You need a real answer &mdash; fast.</h2>
     <p class="sub">Most small MSPs don't run formal assessments because the tools are too complex, too expensive, or take too long to produce a useful deliverable.</p>
     <div class="pain-grid">
       <div class="pain-card">
         <h3>"Do we pass our cyber insurance audit?"</h3>
-        <p>Insurers are requiring documented security posture reviews. Without a formal assessment, your clients are guessing — and so are you.</p>
+        <p>Insurers are requiring documented security posture reviews. Without a formal assessment, your clients are guessing &mdash; and so are you.</p>
       </div>
       <div class="pain-card">
         <h3>Other tools cost $300+/mo and require training</h3>
         <p>Enterprise assessment platforms are priced for large MSPs with dedicated security teams. Small shops can't justify the cost for a handful of clients.</p>
       </div>
       <div class="pain-card">
-        <h3>You run a scan and get a wall of data</h3>
-        <p>Raw scan output doesn't help a business owner make a decision. You need a professional report that makes the risk real — and that a client can act on.</p>
+        <h3>You run a scan and get a wall of raw data</h3>
+        <p>Raw scan output doesn't help a business owner make a decision. You need a professional report that makes the risk real &mdash; and that a client can act on.</p>
       </div>
       <div class="pain-card">
-        <h3>Technical findings don't convert to sales</h3>
-        <p>Finding a vulnerability is one thing. Turning it into a managed services conversation is another. Most tools stop at the finding. SimpleAudit goes further.</p>
+        <h3>Technical findings don't convert to billable work</h3>
+        <p>Finding a vulnerability is one thing. Turning it into a managed services conversation is another. Most tools stop at the finding and leave the sales work to you.</p>
       </div>
     </div>
   </div>
@@ -651,31 +638,31 @@
 <section class="how" id="how-it-works">
   <div class="container">
     <div class="label">How It Works</div>
-    <h2>Simple enough for any technician.<br>Professional enough for any client.</h2>
+    <h2>Simple enough for any technician. <br>Professional enough for any client.</h2>
     <p class="sub">No certifications required. No complex setup. Any technician on your team can run a complete assessment on day one.</p>
     <div class="steps">
       <div class="step">
         <div class="step-n">1</div>
         <h3>Download &amp; run the agent</h3>
-        <p>Get a pre-configured EXE from your portal. Copy it to a USB or send it to the client. Run it on any Windows machine on their network. No admin credentials needed for the standard scan.</p>
+        <p>Get a pre-configured EXE from your portal. Copy it to a USB or deploy via your RMM. Run it on any Windows machine on the client's network. No admin credentials needed for the standard scan.</p>
         <span class="step-time">2 min setup</span>
       </div>
       <div class="step">
         <div class="step-n">2</div>
         <h3>Scan runs automatically</h3>
-        <p>SimpleAudit checks 16 categories: local security posture, breach history, open ports, credential exposure, WLAN encryption, USB history, SMB shares, TLS certificates, CVE detection, M365 security, domain/DNS, software end-of-life, event logs, and more.</p>
+        <p>The agent checks 17+ categories: Windows Defender posture, backup health, patch gaps, credential exposure, breach history, open ports, SMB shares, WLAN security, scheduled tasks, PowerShell logging, screen lock policy, M365 security, domain/DNS, software EOL, CVEs, and more.</p>
         <span class="step-time">~15 min scan</span>
       </div>
       <div class="step">
         <div class="step-n">3</div>
         <h3>Results upload to your portal</h3>
-        <p>When the scan finishes, findings upload automatically to your SimpleAudit portal. Log in from anywhere — the data is already waiting for you. No file transfers.</p>
+        <p>When the scan finishes, findings upload automatically to your SimpleAudit portal. The portal then runs additional threat intel checks &mdash; Shodan, VirusTotal, HIBP, and more &mdash; enriching your results without storing any API keys on client machines.</p>
         <span class="step-time">~2 min upload</span>
       </div>
       <div class="step">
         <div class="step-n">4</div>
         <h3>Generate reports in one click</h3>
-        <p>Choose Executive Summary for the business owner, Technical Report for your team, or Business Proposal for the sales conversation. All three are ready in under a minute.</p>
+        <p>Choose Executive Summary for the business owner, Technical Report for your team, or Business Proposal for the sales conversation. All three are branded PDFs with your company name &mdash; ready in under a minute.</p>
         <span class="step-time">&lt;1 min PDF</span>
       </div>
     </div>
@@ -686,48 +673,133 @@
 <section id="features">
   <div class="container">
     <div class="label">Features</div>
-    <h2>What makes SimpleAudit different</h2>
-    <p class="sub">Other tools scan and report. SimpleAudit scans, reports, and helps you win the business.</p>
+    <h2>One scan. Three reports. <br>Endpoint + network + cloud + breach + compliance.</h2>
+    <p class="sub">Most tools make you buy 3-4 separate products to get this coverage. SimpleAudit does it in a single scan.</p>
     <div class="feat-grid">
 
       <div class="feat star">
         <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4F50F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-        <h3>Business Proposal PDF — Automatic</h3>
-        <p>Every scan generates a branded business proposal that translates technical findings into business risk and recommended services. No competitor does this automatically. MSPs use it to close contracts the same week as the assessment.</p>
-        <span class="uniq">No Other MSP Tool Does This</span>
+        <h3>Business Proposal PDF &mdash; Automatic</h3>
+        <p>Every scan can generate a branded business proposal that translates technical findings into business risk and recommended services. Walk into a discovery call with a professional document ready to present &mdash; generated in under a minute.</p>
+        <span class="uniq">Built-in Sales Tool</span>
       </div>
 
       <div class="feat">
-        <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>Executive Summary PDF</h3>
-        <p>A clear, jargon-free report for the business owner or board — risk score, category breakdown, CIS/NIST compliance scorecard, and what to fix first. Same report type offered by enterprise tools, at a fraction of the price.</p>
+        <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>17+ Scan Modules</h3>
+        <p>Windows Defender posture, backup health, patch gap analysis, credential exposure, PowerShell logging, screen lock policy, scheduled task persistence, WLAN encryption, USB history, SMB shares, TLS certificates, CVE detection, M365 MFA &amp; Secure Score, domain DNS/SPF/DMARC/DKIM, software end-of-life, and event log anomalies.</p>
       </div>
 
       <div class="feat">
         <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h3>16-Module Scan Coverage</h3>
-        <p>Breach history (HIBP + DeHashed), credential leaks, network exposure, WLAN security, USB device history, open SMB shares, TLS/SSL certificates, software end-of-life, CVE detection (NVD + CISA KEV), M365 security (Secure Score, MFA, Conditional Access), domain/DNS analysis, threat intel, event log anomalies, and local security posture.</p>
+        <h3>17 Threat Intel Sources</h3>
+        <p>HIBP, DeHashed, Shodan, VirusTotal, AlienVault OTX, Google Safe Browsing, AbuseIPDB, URLScan.io, DNS blacklists, NVD/CISA KEV, crt.sh Certificate Transparency, GreyNoise IP classification, and more. All run server-side &mdash; no API keys stored on client machines.</p>
       </div>
 
       <div class="feat">
         <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <h3>CIS 18 &amp; NIST CSF 2.0 Auto-Mapping</h3>
-        <p>Every finding automatically maps to the correct CIS Control and NIST CSF 2.0 function. Your Executive PDF includes a compliance scorecard ready for insurance audits — no manual framework work required.</p>
+        <p>Every finding automatically maps to the correct CIS Control and NIST CSF 2.0 function. Your Executive PDF includes a compliance scorecard ready for insurance audits &mdash; no manual framework work required.</p>
       </div>
 
       <div class="feat">
         <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-        <h3>Client Magic-Link Portal</h3>
-        <p>Send clients a private, time-limited link to view their own reports — no login, no password, no support calls. Branded with your MSP name and logo. Fully revokable from your admin panel.</p>
+        <h3>Client Portal with Magic Links</h3>
+        <p>Send clients a private, time-limited link to view their own reports &mdash; no login, no password, no support calls. Links are revokable from your admin panel at any time.</p>
       </div>
 
       <div class="feat">
-        <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <h3>Full White-Label on Every Plan</h3>
-        <p>Your logo, your colors, your contact info on every PDF and every client-facing page. SimpleAudit is invisible to your clients. Every plan — including the entry-level tier — includes full white-label branding.</p>
+        <div class="feat-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <h3>Discovery Questionnaire + AI Profile</h3>
+        <p>Send prospects a branded intake questionnaire. AI generates a client profile narrative from their responses &mdash; ready to reference in your sales meeting. Syncs to your CRM automatically.</p>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- WHAT THE AGENT SCANS -->
+<section class="scan-dark" id="modules">
+  <div class="container">
+    <div class="label">What Gets Scanned</div>
+    <h2 style="color:#fff;">Endpoint + network + cloud + breach + compliance</h2>
+    <p class="sub" style="color:rgba(255,255,255,.55);">The Go agent runs locally on a Windows machine. The portal enriches results with 17 threat intel APIs server-side.</p>
+
+    <div class="scan-grid">
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Windows Defender</h4>
+        <p>Real-time, tamper, cloud, behavior monitoring + AV exclusion list</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h4>Backup Health</h4>
+        <p>VSS, Windows Backup, and 13 backup agent vendors (Veeam, Datto, Acronis, etc.)</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h4>Patch Gap</h4>
+        <p>Days since last update, pending patches, auto-update config, last reboot</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <h4>Credentials</h4>
+        <p>Saved Windows credentials, browser password stores, credential vault audit</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+        <h4>PowerShell Logging</h4>
+        <p>Script Block, Module, and Transcription logging (CIS requirement)</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h4>Screen Lock</h4>
+        <p>Idle timeout, password-on-resume, GPO enforcement status</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Scheduled Tasks</h4>
+        <p>Non-Microsoft tasks running as SYSTEM (persistence detection)</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+        <h4>WLAN Security</h4>
+        <p>Saved WiFi profiles, encryption type, weak authentication detection</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D97F1" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Network Scan</h4>
+        <p>Open ports, service detection, SMB share permissions</p>
+        <span class="si-tag si-agent">Agent</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4F50F" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.78 7.78 5.5 5.5 0 017.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+        <h4>Breach History</h4>
+        <p>HIBP + DeHashed breach and credential leak lookups</p>
+        <span class="si-tag si-portal">Portal Intel</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4F50F" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h4>Threat Intel</h4>
+        <p>Shodan, VirusTotal, OTX, AbuseIPDB, GreyNoise, Safe Browsing</p>
+        <span class="si-tag si-portal">Portal Intel</span>
+      </div>
+      <div class="scan-item">
+        <div class="si-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4F50F" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Domain &amp; DNS</h4>
+        <p>SPF, DMARC, DKIM (29 selectors), SSL/TLS, WHOIS, crt.sh subdomains</p>
+        <span class="si-tag si-portal">Portal Intel</span>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin-top:24px;">Plus: M365 MFA &amp; Secure Score, software EOL, CVE/NVD detection, USB device history, event log analysis, TLS certificate checks, local firewall &amp; BitLocker status.</p>
   </div>
 </section>
 
@@ -741,26 +813,26 @@
       <div class="r-card">
         <div class="ri"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lt-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3>Executive Summary</h3>
-        <p>Risk score gauge, category breakdown, CIS/NIST compliance scorecard, historical score trend, and top priorities. Clear language for business owners. No technical jargon.</p>
+        <p>Risk score, category breakdown, CIS/NIST compliance scorecard, score history trend, and top priorities. Clear language for business owners. No technical jargon.</p>
         <span class="rt rt-std">All Plans</span>
       </div>
       <div class="r-card">
         <div class="ri"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lt-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Technical Report</h3>
-        <p>Per-machine findings, severity ratings, CVE references, and specific step-by-step remediation instructions. Built for your technicians to execute from, not just read.</p>
+        <p>Per-module findings, severity ratings, CVE references, and remediation steps. Built for your technicians to execute from, not just read.</p>
         <span class="rt rt-std">All Plans</span>
       </div>
       <div class="r-card">
         <div class="ri"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
         <h3>Business Proposal</h3>
-        <p>Translates every finding into financial risk and ROI. Includes your recommended services, estimated investment, and a prioritized remediation roadmap — ready to present same day.</p>
-        <span class="rt rt-uniq">Unique to SimpleAudit</span>
+        <p>Translates findings into business risk with your recommended services and estimated investment. Ready to present to the client the same day as the scan.</p>
+        <span class="rt rt-uniq">Built-in Sales Tool</span>
       </div>
       <div class="r-card">
         <div class="ri"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--lt-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         <h3>Pre-Sales Snapshot</h3>
-        <p>Run a quick domain, breach history, and internet exposure check before your first site visit. Walk into the discovery call already knowing the client's risk profile. Available on Growth+.</p>
-        <span class="rt rt-std">Growth &amp; up</span>
+        <p>Run a quick domain, breach history, and internet exposure check before your first site visit. Walk into the discovery call already knowing the client's risk profile.</p>
+        <span class="rt rt-std">Growth &amp; Up</span>
       </div>
     </div>
   </div>
@@ -770,8 +842,8 @@
 <section class="comparison">
   <div class="container">
     <div class="label">How We Compare</div>
-    <h2>Honest comparison with the alternatives</h2>
-    <p class="sub">We checked. Here's what competing tools offer at their published tiers — and where SimpleAudit stands apart.</p>
+    <h2>Straightforward comparison</h2>
+    <p class="sub">We researched public pricing and feature lists for competing MSP assessment tools. Here's where things stand.</p>
     <div class="comp-wrap">
       <table class="comp">
         <thead>
@@ -780,7 +852,6 @@
             <th class="you-col" style="min-width:140px;">SimpleAudit</th>
             <th style="min-width:140px;">ConnectSecure</th>
             <th style="min-width:150px;">Network Detective</th>
-            <th style="min-width:140px;">Galactic Advisors</th>
           </tr>
         </thead>
         <tbody>
@@ -788,76 +859,60 @@
             <td>Starting Price</td>
             <td class="y">From $49/mo</td>
             <td class="p">$300+/mo</td>
-            <td class="p">Custom / Opaque</td>
-            <td class="p">Custom / Opaque</td>
+            <td class="p">Custom pricing</td>
           </tr>
           <tr>
-            <td>No long-term contract</td>
-            <td class="y">✓ Month-to-month</td>
-            <td class="y">✓</td>
-            <td class="n">✗ Annual required</td>
-            <td class="p">Unknown</td>
+            <td>Long-term contract required?</td>
+            <td class="y">No &mdash; month-to-month</td>
+            <td class="y">No</td>
+            <td class="nn">Annual required</td>
           </tr>
           <tr>
             <td>Executive Summary PDF</td>
-            <td class="y">✓</td>
-            <td class="y">✓</td>
-            <td class="y">✓</td>
-            <td class="y">✓</td>
+            <td class="y">Yes</td>
+            <td class="y">Yes</td>
+            <td class="y">Yes (100+ reports)</td>
           </tr>
           <tr>
-            <td>Technical Detail Report</td>
-            <td class="y">✓</td>
-            <td class="y">✓</td>
-            <td class="y">✓ (100+ reports)</td>
-            <td class="y">✓</td>
+            <td>Technical Report PDF</td>
+            <td class="y">Yes</td>
+            <td class="y">Yes</td>
+            <td class="y">Yes</td>
+          </tr>
+          <tr>
+            <td>Business Proposal PDF</td>
+            <td class="y">Yes &mdash; automatic</td>
+            <td class="nn">No</td>
+            <td class="nn">No</td>
+          </tr>
+          <tr>
+            <td>CIS / NIST Compliance Mapping</td>
+            <td class="y">CIS 18 + NIST CSF 2.0</td>
+            <td class="p">Partial</td>
+            <td class="nn">No</td>
           </tr>
           <tr class="you-row">
-            <td><strong>Business Proposal from Scan Data</strong></td>
-            <td class="y">✓ Automatic</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
+            <td><strong>Breach + Threat Intel Built-in</strong></td>
+            <td class="y">17 sources</td>
+            <td class="nn">No</td>
+            <td class="nn">No</td>
           </tr>
           <tr>
-            <td>CIS 18 / NIST CSF 2.0 Mapped</td>
-            <td class="y">✓ Auto-mapped</td>
-            <td class="p">Partial</td>
-            <td class="n">✗</td>
-            <td class="p">Partial</td>
-          </tr>
-          <tr>
-            <td>Breach History (HIBP / DeHashed)</td>
-            <td class="y">✓ Built-in</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-          </tr>
-          <tr class="you-row">
-            <td><strong>Client Magic-Link (no login)</strong></td>
-            <td class="y">✓</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-          </tr>
-          <tr>
-            <td>Full White-Label Branding</td>
-            <td class="y">✓ All plans</td>
-            <td class="y">✓</td>
-            <td class="p">Limited</td>
-            <td class="p">Unknown</td>
+            <td>Client Portal with Magic Links</td>
+            <td class="y">Yes</td>
+            <td class="nn">No</td>
+            <td class="nn">No</td>
           </tr>
           <tr>
             <td>No Credentials Required</td>
-            <td class="y">✓ Standard scan</td>
-            <td class="n">✗</td>
-            <td class="n">✗</td>
-            <td class="y">✓ Patented</td>
+            <td class="y">Standard scan</td>
+            <td class="nn">Requires credentials</td>
+            <td class="nn">Requires credentials</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p style="text-align:center;font-size:11px;color:var(--grey);margin-top:16px;line-height:1.6;">Feature comparison based on publicly available information as of March 2026.<br>Believe something is inaccurate? <a href="mailto:hello@getsimpleaudit.com" style="color:var(--blue);">Let us know</a> and we'll update it.</p>
+    <p style="text-align:center;font-size:11px;color:var(--grey);margin-top:16px;line-height:1.6;">Based on publicly available information as of March 2026. Pricing and features may have changed.<br>See something inaccurate? Email <strong>hello@getsimpleaudit.com</strong> and we'll update it.</p>
   </div>
 </section>
 
@@ -866,7 +921,7 @@
   <div class="container">
     <div class="label">Pricing</div>
     <h2>Start small. Grow when you're ready.</h2>
-    <p class="sub">No long-term commitments. No per-seat fees. Pay by the number of client companies you manage — not by technician headcount.</p>
+    <p class="sub">No long-term commitments. No per-seat fees. Pay by the number of client companies you manage &mdash; not by technician headcount.</p>
 
     <!-- BILLING TOGGLE -->
     <div class="billing-toggle">
@@ -884,7 +939,7 @@
       <div style="text-align:center;margin-bottom:20px;">
         <span style="display:inline-block;background:#f0fdf4;color:#15803d;font-size:11px;font-weight:700;
                      text-transform:uppercase;letter-spacing:.1em;padding:4px 14px;border-radius:20px;
-                     border:1px solid #bbf7d0;">For individuals &amp; break/fix shops</span>
+                     border:1px solid #bbf7d0;">For solo techs &amp; break/fix shops</span>
       </div>
       <div style="max-width:420px;margin:0 auto;background:#fff;border:2px solid #1D97F1;border-radius:14px;
                   padding:32px 36px;box-shadow:0 4px 24px rgba(29,151,241,.10);position:relative;">
@@ -892,45 +947,46 @@
                     color:#1D97F1;margin-bottom:10px;">Solo</div>
         <div style="font-size:15px;color:#444;margin-bottom:18px;line-height:1.5;">
           A plain-English health check for a single PC. Finds real problems, explains them simply,
-          and recommends the right fixes. No network scanning, no IT jargon.
+          and recommends the right fixes. No network scanning, no IT jargon. Perfect for
+          break/fix techs who want to show clients what needs attention.
         </div>
         <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
           <div style="text-align:center;">
             <div style="font-size:28px;font-weight:800;color:#131313;">$25</div>
             <div style="font-size:11px;color:#888;">10 credits</div>
           </div>
-          <div style="color:#ccc;font-size:20px;">·</div>
+          <div style="color:#ccc;font-size:20px;">&middot;</div>
           <div style="text-align:center;">
             <div style="font-size:28px;font-weight:800;color:#131313;">$39<span style="font-size:14px;font-weight:400;color:#888;">/mo</span></div>
             <div style="font-size:11px;color:#888;">unlimited scans</div>
           </div>
-          <div style="color:#ccc;font-size:20px;">·</div>
+          <div style="color:#ccc;font-size:20px;">&middot;</div>
           <div style="text-align:center;">
             <div style="font-size:28px;font-weight:800;color:#131313;">$299<span style="font-size:14px;font-weight:400;color:#888;">/yr</span></div>
             <div style="font-size:11px;color:#888;">best value</div>
           </div>
         </div>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;">
-          <li style="font-size:13px;color:#333;">✓ 12-point health check</li>
-          <li style="font-size:13px;color:#333;">✓ Letter grade (A–F)</li>
-          <li style="font-size:13px;color:#333;">✓ Plain-English findings</li>
-          <li style="font-size:13px;color:#333;">✓ Product recommendations</li>
-          <li style="font-size:13px;color:#333;">✓ Antivirus &amp; firewall status</li>
-          <li style="font-size:13px;color:#333;">✓ Password breach check</li>
-          <li style="font-size:13px;color:#333;">✓ Windows Update status</li>
-          <li style="font-size:13px;color:#333;">✓ Disk &amp; backup health</li>
-          <li style="font-size:13px;color:#333;">✓ Runs in 3–5 minutes</li>
-          <li style="font-size:13px;color:#333;">✓ No IT knowledge needed</li>
+          <li style="font-size:13px;color:#333;">&#10003; 12-point health check</li>
+          <li style="font-size:13px;color:#333;">&#10003; Letter grade (A&ndash;F)</li>
+          <li style="font-size:13px;color:#333;">&#10003; Plain-English findings</li>
+          <li style="font-size:13px;color:#333;">&#10003; Recommended next steps</li>
+          <li style="font-size:13px;color:#333;">&#10003; Antivirus &amp; firewall status</li>
+          <li style="font-size:13px;color:#333;">&#10003; Password breach check</li>
+          <li style="font-size:13px;color:#333;">&#10003; Windows Update status</li>
+          <li style="font-size:13px;color:#333;">&#10003; Disk &amp; backup health</li>
+          <li style="font-size:13px;color:#333;">&#10003; Runs in 3&ndash;5 minutes</li>
+          <li style="font-size:13px;color:#333;">&#10003; No IT knowledge needed</li>
         </ul>
-        <a href="mailto:ben@simpletech.pro?subject=SimpleAudit Solo - Get Access"
+        <a href="https://app.getsimpleaudit.com/signup"
            style="display:block;text-align:center;background:#1D97F1;color:#fff;font-weight:700;
                   font-size:14px;padding:13px;border-radius:8px;text-decoration:none;
                   transition:background .2s;"
            onmouseover="this.style.background='#1580cc'" onmouseout="this.style.background='#1D97F1'">
-          Get Solo Access
+          Start Free Trial
         </a>
         <p style="text-align:center;font-size:11px;color:#aaa;margin-top:10px;">
-          Included free in all MSP plans &nbsp;·&nbsp; No subscription required for credit packs
+          Solo scan included free in all MSP plans &nbsp;&middot;&nbsp; No subscription required for credit packs
         </p>
       </div>
     </div>
@@ -959,20 +1015,20 @@
           <li>Executive Summary PDF</li>
           <li>Technical Report PDF</li>
           <li>Business Proposal PDF</li>
-          <li>Full white-label branding</li>
           <li>CIS 18 / NIST CSF 2.0 mapping</li>
           <li>Client magic-link portal</li>
-          <li class="no">Scan scheduling &amp; reminders</li>
-          <li class="no">Pre-sales snapshot scanner</li>
-          <li class="no">Score history &amp; trending</li>
+          <li>Score history tracking</li>
           <li>Email support</li>
+          <li class="no">Pre-sales snapshot scanner</li>
+          <li class="no">Discovery questionnaire + AI profile</li>
+          <li class="no">PSA / CRM integrations</li>
         </ul>
         <a href="https://app.getsimpleaudit.com/signup" class="pc-btn outline">Start Free Trial</a>
       </div>
 
       <!-- GROWTH -->
       <div class="pc pop">
-        <div class="pop-badge">Recommended</div>
+        <div class="pop-badge">Most Popular</div>
         <div class="pc-tier">Growth</div>
         <div class="pc-amount">
           <span class="dollar">$</span>
@@ -984,15 +1040,12 @@
         <ul class="pc-features">
           <li>15 active client companies</li>
           <li>Unlimited scans per client</li>
-          <li>Executive Summary PDF</li>
-          <li>Technical Report PDF</li>
-          <li>Business Proposal PDF</li>
-          <li>Full white-label branding</li>
-          <li>CIS 18 / NIST CSF 2.0 mapping</li>
-          <li>Client magic-link portal</li>
-          <li>Scan scheduling &amp; reminders</li>
+          <li>Everything in Starter</li>
           <li>Pre-sales snapshot scanner</li>
-          <li>Score history &amp; trending charts</li>
+          <li>Discovery questionnaire + AI profile</li>
+          <li>GoHighLevel CRM integration</li>
+          <li>Syncro PSA integration</li>
+          <li>Multi-user portal access</li>
           <li>Priority email support</li>
         </ul>
         <a href="https://app.getsimpleaudit.com/signup" class="pc-btn fill">Start Free Trial</a>
@@ -1012,11 +1065,8 @@
           <li>30 active client companies</li>
           <li>Unlimited scans per client</li>
           <li>Everything in Growth</li>
-          <li>Discovery questionnaire + AI profile</li>
-          <li>CRM integration (HighLevel / Growably)</li>
           <li>Reseller onboarding guide PDF</li>
-          <li>Syncro PSA integration</li>
-          <li>Multi-user portal access</li>
+          <li>Finding acknowledgment &amp; tracking</li>
           <li>Phone + email support</li>
         </ul>
         <a href="https://app.getsimpleaudit.com/signup" class="pc-btn outline">Start Free Trial</a>
@@ -1033,21 +1083,19 @@
         <ul class="pc-features">
           <li>Unlimited client companies</li>
           <li>Everything in Pro</li>
-          <li>Custom domain for client portal</li>
           <li>Dedicated onboarding &amp; training</li>
           <li>SLA-backed support</li>
           <li>Volume pricing &amp; annual contracts</li>
-          <li>Custom compliance framework mapping</li>
         </ul>
-        <a href="mailto:ben@simpletech.pro?subject=SimpleAudit Enterprise Inquiry" class="pc-btn dark">Contact Us</a>
+        <a href="https://app.getsimpleaudit.com/signup" class="pc-btn dark">Contact Us</a>
       </div>
 
     </div>
 
     <p class="pricing-note">
-      All plans include a <strong>14-day free trial</strong> — no credit card required &nbsp;·&nbsp;
-      Cancel anytime, no penalties &nbsp;·&nbsp;
-      Annual plans billed once per year &nbsp;·&nbsp;
+      All plans include a <strong>14-day free trial</strong> &mdash; no credit card required &nbsp;&middot;&nbsp;
+      Cancel anytime, no penalties &nbsp;&middot;&nbsp;
+      Annual plans billed once per year &nbsp;&middot;&nbsp;
       No setup fees, no contracts
     </p>
   </div>
@@ -1062,52 +1110,47 @@
 
       <details open>
         <summary>How is SimpleAudit different from ConnectSecure or Network Detective?</summary>
-        <p>ConnectSecure and Network Detective are excellent tools — they generate Executive Summaries and Technical Reports, and they've been around longer than us. The core difference: SimpleAudit is the only tool that automatically generates a Business Proposal PDF from your scan data — translating technical findings into a client-ready sales document. We're also significantly cheaper at entry level ($49/mo vs. $300+/mo) and require no long-term contract.</p>
+        <p>SimpleAudit combines endpoint scanning, network scanning, M365 security checks, breach monitoring, and threat intelligence into a single scan &mdash; most competing tools require separate products or paid add-ons for each. We also generate a Business Proposal PDF automatically from your scan data. At $49/mo with no contract and no setup fee, the barrier to try it is low.</p>
       </details>
 
       <details>
         <summary>Do I need IT credentials or domain admin access to run a scan?</summary>
-        <p>No credentials are required for the Standard scan. It runs from any Windows machine on the client's network and assesses the security posture from that machine's perspective. Our Pro build (available in Enterprise plan) adds optional credentialed WMI and Active Directory scanning for deeper findings — but that's not required to get a complete, useful assessment.</p>
+        <p>No credentials are required for the standard scan. The agent runs from any Windows machine on the client's network and assesses the security posture from that machine's perspective. Optional M365 checks require read-only Azure AD credentials, which you enter per-scan &mdash; they're never stored on the client machine.</p>
       </details>
 
       <details>
         <summary>What does "up to X client companies" mean?</summary>
-        <p>Each "company" is a separate client in your portal — with their own scan history, reports, and magic-link portal. Within each company, you can run unlimited scans on any number of machines. The limit is on how many distinct clients you manage at once, not on scan volume. You can archive old clients and add new ones as your roster changes.</p>
-      </details>
-
-      <details>
-        <summary>Can I white-label this completely — is SimpleAudit visible to my clients?</summary>
-        <p>SimpleAudit is completely invisible to your clients on every plan. Every PDF, every client portal page, and every automated email shows your MSP's name, logo, phone, and website. Your clients will never know what tool you're using.</p>
+        <p>Each "company" is a separate client in your portal &mdash; with their own scan history, reports, and client portal link. Within each company, you can run unlimited scans on any number of machines. The limit is on how many distinct clients you manage at once, not on scan volume. You can archive old clients and add new ones as your roster changes.</p>
       </details>
 
       <details>
         <summary>Is the scan agent going to trigger antivirus on the client machine?</summary>
-        <p>The SimpleAudit agent is a lightweight compiled binary with no offensive security tooling — no exploit frameworks, no password crackers, no network attack tools. It runs cleanly through Windows Defender and most business antivirus solutions. If a specific AV flags it, adding a folder exclusion resolves it in under a minute. We're also in the process of obtaining an EV code signing certificate for full SmartScreen trust. We always recommend briefing the client before running any scan — both as good practice and so they're not surprised by the process.</p>
+        <p>The SimpleAudit agent is a lightweight compiled binary with no offensive security tooling &mdash; no exploit frameworks, no password crackers, no network attack tools. It runs cleanly through Windows Defender and most business antivirus solutions. If a specific AV flags it, adding a folder exclusion resolves it in under a minute. We always recommend briefing the client before running any scan.</p>
       </details>
 
       <details>
-        <summary>What is the Business Proposal PDF and how is it generated?</summary>
-        <p>After a scan completes, you can click "Generate Business Proposal" in your portal. SimpleAudit takes the scan findings, maps them to risk categories and estimated financial exposure, adds your MSP's recommended services and contact information, and generates a professionally formatted PDF proposal — automatically. No template editing, no copy-pasting. Clients receive a document that reads like it took hours to produce. It typically takes under a minute to generate.</p>
+        <summary>What is the Business Proposal PDF?</summary>
+        <p>After a scan completes, you can generate a Business Proposal from your portal. It takes the scan findings, maps them to risk categories, adds your recommended services and contact information, and generates a branded PDF &mdash; automatically. No template editing, no copy-pasting. It typically takes under a minute to generate.</p>
       </details>
 
       <details>
         <summary>Why should I pay for this when I can document findings in a spreadsheet?</summary>
-        <p>You absolutely can — many MSPs do. The question is whether your time is worth $49/mo. A manual assessment typically takes 2-4 hours per client: running scans, consolidating data, writing the report, formatting a proposal. SimpleAudit does it in 20 minutes and produces three branded PDFs that look more professional than a spreadsheet ever will. If that wins you even one new client per quarter, the tool pays for itself in the first month.</p>
+        <p>You absolutely can &mdash; many MSPs do. The question is whether your time is worth $49/mo. A manual assessment typically takes 2-4 hours per client: running scans, consolidating data, writing the report, formatting a proposal. SimpleAudit does it in 20 minutes and produces three branded PDFs. If that wins you even one new client per quarter, the tool pays for itself in the first month.</p>
       </details>
 
       <details>
         <summary>Can I upgrade or downgrade my plan?</summary>
-        <p>Yes, anytime. Upgrading takes effect immediately. Downgrading takes effect at the next billing cycle. If you downgrade to a plan with fewer company slots than you currently have active, you'll be asked to archive clients down to the new limit before the change processes.</p>
+        <p>Yes, anytime. Upgrading takes effect immediately. Downgrading takes effect at the next billing cycle. If you downgrade to a plan with fewer company slots than you currently have active, you'll be asked to archive clients down to the new limit.</p>
       </details>
 
       <details>
         <summary>Is there a free trial? Do I need a credit card?</summary>
-        <p>Every plan includes a 14-day free trial with full access to all features on that tier. No credit card required to start. At the end of the trial, you'll choose to subscribe or your account enters a read-only state — your data is never deleted.</p>
+        <p>Every plan includes a 14-day free trial with full access to all features on that tier. No credit card required to start. At the end of the trial, you choose to subscribe or your account enters read-only mode &mdash; your data is never deleted.</p>
       </details>
 
       <details>
         <summary>What operating systems does the scan agent support?</summary>
-        <p>The agent runs on Windows 10 and Windows 11. It's designed for client endpoint environments, which are overwhelmingly Windows in the MSP market. The portal and all report generation work from any modern browser on any OS — Mac, Linux, or Windows.</p>
+        <p>The agent runs on Windows 10 and Windows 11. It's designed for client endpoint environments, which are overwhelmingly Windows in the MSP market. The portal and all report generation work from any modern browser on any OS.</p>
       </details>
 
     </div>
@@ -1117,13 +1160,13 @@
 <!-- FINAL CTA -->
 <section class="cta-final">
   <div class="container">
-    <h2>Your next assessment is<br><em>20 minutes away</em>.</h2>
-    <p>Start your 14-day free trial today. No credit card. Full white-label. Same-day setup.</p>
+    <h2>Your next assessment is <br><em>20 minutes away</em>.</h2>
+    <p>Start your 14-day free trial today. No credit card. Same-day setup.</p>
     <div class="cta-btns">
       <a href="https://app.getsimpleaudit.com/signup" class="btn-main" style="font-size:15px;padding:16px 32px;">Start Free Trial &rarr;</a>
-      <button type="button" class="btn-ghost" style="font-size:15px;padding:16px 32px;cursor:pointer;" onclick="openSampleModal()">Request Sample Report</button>
+      <button type="button" class="btn-ghost" style="font-size:15px;padding:16px 32px;" onclick="openSampleModal()">Request Sample Report</button>
     </div>
-    <p class="cta-small">No credit card &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Full white-label on every plan &nbsp;·&nbsp; Same-day setup</p>
+    <p class="cta-small">No credit card &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; 14-day free trial on every plan</p>
   </div>
 </section>
 
@@ -1134,7 +1177,7 @@
 
     <div id="srFormWrap">
       <h3 id="srModalTitle">Get a Sample Report</h3>
-      <p class="sr-sub">We'll send you a real example Executive Summary, Technical Report, and Business Proposal — within 1 business day.</p>
+      <p class="sr-sub">We'll send you a real Executive Summary, Technical Report, and Business Proposal &mdash; within 1 business day.</p>
 
       <form id="srForm" onsubmit="submitSampleForm(event)" novalidate>
         <div class="sr-form-row">
@@ -1168,7 +1211,7 @@
     </div>
 
     <div class="sr-success" id="srSuccess">
-      <div class="sr-check">✅</div>
+      <div class="sr-check">&#9989;</div>
       <h4>You're all set!</h4>
       <p>Thanks! Check your inbox within 1 business day. We'll send over the full sample report package.</p>
     </div>
@@ -1178,12 +1221,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="foot-logo">Simple<span>Audit</span></div>
-  <p>&copy; 2026 Simple Tech, LLC &nbsp;·&nbsp; <a href="https://getsimpleaudit.com" style="color:inherit;">getsimpleaudit.com</a> &nbsp;·&nbsp; <a href="mailto:hello@getsimpleaudit.com" style="color:inherit;">hello@getsimpleaudit.com</a></p>
+  <p>&copy; 2026 Simple Tech, LLC &nbsp;&middot;&nbsp; <a href="https://getsimpleaudit.com" style="color:inherit;">getsimpleaudit.com</a> &nbsp;&middot;&nbsp; hello@getsimpleaudit.com</p>
   <p style="margin-top:6px;">Built by MSPs, for MSPs. No fluff. No lengthy contracts.</p>
   <p style="margin-top:8px;">
-    <a href="https://app.getsimpleaudit.com/terms" style="color:rgba(255,255,255,.55);">Terms of Service</a> &nbsp;·&nbsp;
-    <a href="https://app.getsimpleaudit.com/privacy" style="color:rgba(255,255,255,.55);">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="https://app.getsimpleaudit.com/dpa" style="color:rgba(255,255,255,.55);">DPA</a> &nbsp;·&nbsp;
+    <a href="https://app.getsimpleaudit.com/terms" style="color:rgba(255,255,255,.55);">Terms of Service</a> &nbsp;&middot;&nbsp;
+    <a href="https://app.getsimpleaudit.com/privacy" style="color:rgba(255,255,255,.55);">Privacy Policy</a> &nbsp;&middot;&nbsp;
+    <a href="https://app.getsimpleaudit.com/dpa" style="color:rgba(255,255,255,.55);">DPA</a> &nbsp;&middot;&nbsp;
     <a href="https://app.getsimpleaudit.com/acceptable-use" style="color:rgba(255,255,255,.55);">Acceptable Use</a>
   </p>
 </footer>
@@ -1204,20 +1247,21 @@
     yrLabel.classList.toggle('active', annual);
 
     prices.forEach(el => {
-      el.textContent = annual ? el.dataset.yr : el.dataset.mo;
+      if (el.dataset.yr) {
+        el.textContent = annual ? el.dataset.yr : el.dataset.mo;
+      }
     });
 
     notes.forEach((id, i) => {
       const el = document.getElementById(id);
       if (el) {
         el.textContent = annual
-          ? `$${annualPrices[i] * 12}/yr — saves $${(monthlyPrices[i] - annualPrices[i]) * 12}/yr`
+          ? '$' + (annualPrices[i] * 12) + '/yr \u2014 saves $' + ((monthlyPrices[i] - annualPrices[i]) * 12) + '/yr'
           : '';
       }
     });
   });
 
-  // Sample Report Modal
   // Mobile nav
   function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
@@ -1225,9 +1269,9 @@
   function closeMobileMenu() {
     document.getElementById('mobileMenu').classList.remove('open');
   }
-  // Close mobile menu on scroll
   window.addEventListener('scroll', closeMobileMenu, { passive: true });
 
+  // Sample Report Modal
   const srOverlay = document.getElementById('srModalOverlay');
 
   function openSampleModal() {
@@ -1263,13 +1307,13 @@
     if (!firstName || !lastName || !email || !company) return;
 
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending\u2026';
 
     const payload = {
       firstName,
       lastName,
       email,
-      name: `${firstName} ${lastName}`,
+      name: firstName + ' ' + lastName,
       companyName: company,
       locationId: 'njDVrhkWWDbwlyypWMPZ',
       tags: ['sample-report-request', 'landing-page-lead']
@@ -1286,7 +1330,6 @@
       console.error('Sample report form submission error:', err);
     }
 
-    // Always show success — never expose errors to visitor
     document.getElementById('srFormWrap').style.display = 'none';
     document.getElementById('srSuccess').style.display = 'block';
   }
