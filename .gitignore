@@ -1,0 +1,25 @@
+# secrets / local config
+config.yaml
+config.yml
+.env
+.env.*
+*.env
+
+# databases
+*.db
+*.sqlite
+*.sqlite3
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+antenv/
+
+# node
+node_modules/
+
+# misc
+.wrangler/
+.DS_Store
